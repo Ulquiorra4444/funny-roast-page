@@ -1,14 +1,26 @@
-function beep() {
-  let ctx = new AudioContext();
-  let osc = ctx.createOscillator();
+let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// 🔊 fake beep sound
+function beep(freq = 600, time = 0.1) {
+  let osc = audioCtx.createOscillator();
+  let gain = audioCtx.createGain();
 
   osc.type = "square";
-  osc.frequency.value = 700;
+  osc.frequency.value = freq;
 
-  osc.connect(ctx.destination);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
   osc.start();
-
-  setTimeout(() => osc.stop(), 100);
+  setTimeout(() => osc.stop(), time * 1000);
 }
 
-setInterval(beep, 1200);
+// 🚨 alarm loop
+setInterval(() => {
+  beep(800, 0.08);
+}, 1200);
+
+// 📳 vibration spam (mobile)
+if (navigator.vibrate) {
+  setInterval(() => navigator.vibrate(200), 1000);
+}
