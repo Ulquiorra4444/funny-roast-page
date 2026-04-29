@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>System Monitor</title>
+<title>SYSTEM MONITOR</title>
 
 <style>
 body {
@@ -18,35 +18,38 @@ body {
   overflow: hidden;
 }
 
-.box {
-  animation: pop 1s ease;
+.screen {
+  width: 90%;
+  animation: flicker 0.15s infinite;
+}
+
+h1 {
+  color: white;
+  font-size: 1.6em;
+}
+
+#status {
+  margin-top: 10px;
+  opacity: 0.8;
 }
 
 #result {
   margin-top: 20px;
   font-size: 1.4em;
   color: red;
-  animation: blink 0.6s infinite;
+  animation: blink 0.4s infinite;
 }
 
-#status {
-  opacity: 0.8;
+.warning {
+  margin-top: 15px;
+  color: #ff0033;
+  font-size: 1.1em;
+  animation: shake 0.2s infinite;
 }
 
 @keyframes blink {
   0%,100% {opacity:1;}
-  50% {opacity:0.2;}
-}
-
-@keyframes pop {
-  from {transform: scale(0.8); opacity:0;}
-  to {transform: scale(1); opacity:1;}
-}
-
-.glitch {
-  color: #ff0033;
-  margin-top: 10px;
-  animation: shake 0.2s infinite;
+  50% {opacity:0.1;}
 }
 
 @keyframes shake {
@@ -56,49 +59,99 @@ body {
   75% {transform: translate(2px,1px);}
   100% {transform: translate(1px,-1px);}
 }
+
+@keyframes flicker {
+  0% {opacity: 1;}
+  50% {opacity: 0.95;}
+  100% {opacity: 1;}
+}
+
+.glitch {
+  color: #ff004c;
+  margin-top: 10px;
+  animation: shake 0.1s infinite;
+}
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>ACCESSING SYSTEM...</h1>
+<div class="screen">
+  <h1>ACCESSING DEVICE...</h1>
 
-  <p>User: [NAME]</p>
+  <p>User detected: [NAME]</p>
 
   <p id="status">Starting scan...</p>
 
   <div id="result"></div>
 
-  <div class="glitch">⚠ SYSTEM BREACH DETECTED ⚠</div>
+  <div class="warning">⚠ SYSTEM BREACH DETECTED ⚠</div>
+
+  <div class="glitch">injecting chaos module...</div>
 </div>
 
 <script>
+// 🔊 beep sound (no file needed)
+function beep() {
+  let ctx = new (window.AudioContext || window.webkitAudioContext)();
+  let osc = ctx.createOscillator();
+  osc.type = "square";
+  osc.frequency.value = 800;
+  osc.connect(ctx.destination);
+  osc.start();
+  setTimeout(() => osc.stop(), 100);
+}
+
+// 📳 vibration (if phone supports it)
+if (navigator.vibrate) {
+  setInterval(() => navigator.vibrate(200), 1000);
+}
+
 let messages = [
-  "Scanning user profile...",
-  "Checking humor database...",
-  "Bypassing personality firewall...",
+  "Scanning personality database...",
+  "Bypassing humor firewall...",
   "Analyzing brain.exe...",
-  "Final judgment loading..."
+  "Injecting sarcasm module...",
+  "Loading final verdict..."
 ];
 
 let i = 0;
-
 let status = document.getElementById("status");
 let result = document.getElementById("result");
 
 let interval = setInterval(() => {
   if (i < messages.length) {
     status.innerText = messages[i];
+    beep();
     i++;
   }
 }, 1200);
 
+// 💥 FINAL EVENT (system breach moment)
 setTimeout(() => {
   clearInterval(interval);
+
+  document.body.style.background = "red";
+
   status.innerText = "ACCESS COMPROMISED";
   result.innerText = "RESULT: UNFUNNIEST PERSON EVER 💀";
+
+  beep();
+  beep();
 }, 7000);
+
+// ✍️ fake typing effect
+let text = "Starting scan...";
+let j = 0;
+let typing = setInterval(() => {
+  if (j < text.length) {
+    status.innerText = text.slice(0, j);
+    j++;
+  } else {
+    clearInterval(typing);
+  }
+}, 80);
+
 </script>
 
 </body>
