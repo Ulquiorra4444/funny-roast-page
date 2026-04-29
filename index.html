@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Scan</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0d0d0d;
+      color: #00ffcc;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box {
+      animation: pop 1s ease;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    .warning {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #ff4d4d;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>SCANNING USER...</h1>
+    <p>Username: [HER NAME]</p>
+    <p>Analyzing humor level...</p>
+
+    <div class="warning">
+      RESULT: UNFUNNIEST PERSON EVER 💀
+    </div>
+
+    <p>System update: joke detected — severity: 100%</p>
+    <p>Recommendation: improve comedy DLC</p>
+  </div>
+
+</body>
+</html>
