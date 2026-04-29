@@ -2,24 +2,28 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SYSTEM MONITOR</title>
+<title>CRITICAL SYSTEM FAILURE</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="screen">
-  <h1>ACCESSING DEVICE...</h1>
+<div class="overlay">
+  <h1>⚠ SYSTEM BREACH ⚠</h1>
 
-  <p>User detected: [NAME]</p>
+  <p>User: [NAME]</p>
 
-  <p id="status">Starting scan...</p>
+  <p id="status">Initializing scan...</p>
+
+  <div class="warning">DO NOT CLOSE THIS SCREEN</div>
+
+  <button onclick="fakeFix()">Attempt System Repair</button>
 
   <div id="result"></div>
-
-  <div class="warning">⚠ SYSTEM BREACH DETECTED ⚠</div>
 </div>
 
+<script src="sound.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
