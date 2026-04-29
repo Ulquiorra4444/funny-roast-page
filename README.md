@@ -25,6 +25,9 @@ or host it on:
 - GitHub Pages
 - Netlify
 
+change the name in script.js and replace USER with the Name of the Target 
+
+
 ## ⚠️ Disclaimer
 This is a joke project. No real hacking or data access happens.
 
