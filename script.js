@@ -1,22 +1,35 @@
-let text = document.getElementById("status");
+const status = document.getElementById("status");
+const result = document.getElementById("result");
+
 let messages = [
-  "Scanning user...",
-  "Analyzing humor level...",
-  "Checking personality database...",
-  "Loading sarcasm module...",
-  "Final verdict incoming..."
+  "Scanning personality database...",
+  "Bypassing humor firewall...",
+  "Analyzing brain.exe...",
+  "Injecting sarcasm module...",
+  "Final verdict loading..."
 ];
 
 let i = 0;
 
-setInterval(() => {
+// typing + scan loop
+let interval = setInterval(() => {
   if (i < messages.length) {
-    text.innerText = messages[i];
+    status.innerText = messages[i];
     i++;
   }
 }, 1200);
 
+// fake vibration (mobile)
+if (navigator.vibrate) {
+  setInterval(() => navigator.vibrate(150), 1000);
+}
+
+// final breach moment
 setTimeout(() => {
-  document.getElementById("result").innerText =
-    "RESULT: UNFUNNIEST PERSON EVER 💀";
+  clearInterval(interval);
+
+  document.body.style.background = "red";
+  status.innerText = "ACCESS COMPROMISED";
+  result.innerText = "RESULT: UNFUNNIEST PERSON EVER 💀";
+
 }, 7000);
