@@ -1,3 +1,5 @@
+const name = "gülü";
+document.getElementById("user").innerText = name;
 let status = document.getElementById("status");
 let result = document.getElementById("result");
 
