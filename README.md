@@ -1,4 +1,4 @@
-# unfunniest-person-ever-website
+# funny-roast-page
 # 😂 Funny System Roast Page
 
 A small joke website that looks like a system scan / hacker interface and displays a funny "roast result" about the user.
